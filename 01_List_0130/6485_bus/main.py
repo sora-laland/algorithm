@@ -10,15 +10,14 @@ for t in range(T):
 
     P = int(input())
     count = [0] * P
-    print(count)
+    # print(count)
     Cj_lst = []
-    for p in range(P):
+    for i in range(P):
         Cj = int(input())
         Cj_lst.append(Cj)
-
-    for i in range(P):
         for j in range(N):
             if Cj_lst[i] in lst[j]:
                 count[i] += 1
-    print(count)
-    print(list(map(str, count)))
+    # print(count)
+    print(f'#{t+1}', end=' ')
+    print(*count)
