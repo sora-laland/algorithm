@@ -1,13 +1,15 @@
 T = int(input())
 for tc in range(1, T+1):
     N = int(input())
-    data = list(map(int, list(input())))  # 데이터를 하나씩 끊어서 누적합
-    print(data)
-    # for i in data:
-
-
-
-    # count = [0] * N
-    # for i in range(1, N):
-    #     data[i] = data[i] + data[i-1]
-    # print(data)
+    arr = list(map(int, list(input())))
+    print(arr)
+    max_v = 0
+    cnt = 0
+    for i in range(N):
+        if arr[i] == 1:
+            cnt += 1
+        else:
+            continue
+    if cnt < max_v:
+        max_v = cnt
+    print(max_v)
