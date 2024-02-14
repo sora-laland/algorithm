@@ -2,16 +2,20 @@ T = 10
 
 
 def postfix(string):
-    stack = [0]  # 인덱스 에러 방지
-    post = ''
+    stack = []
+    postfix = ''
     for tk in string:
-        if tk == '+' and stack[-1] != '+':
+        if tk == '+':
+            if stack:
+                postfix += stack.pop()
             stack.append(tk)  # push
         else:
-            post += tk
-    if stack[-1] == '+':
-        post += stack.pop()  # pop
-    return post
+            postfix += tk  # 피연산자인 경우 출력
+
+    while stack:
+        postfix += stack.pop()
+
+    return postfix
 
 
 for t in range(T):
@@ -20,10 +24,11 @@ for t in range(T):
     postfix_fx = postfix(fx)
     st = []
     for tk in postfix_fx:
-        if tk != '+':
-            st.append(tk)
-        else:
+        if tk == '+':
             a = st.pop()
             b = st.pop()
-            st.append(int(a)+int(b))    # 연산된 값을 push
+            st.append(a+b)    # 연산된 값을 push
+        else:   # 피연산자라면
+            st.append(int(tk))
+
     print(f'#{t+1} {st[0]}')
