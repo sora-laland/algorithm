@@ -3,32 +3,32 @@ T = 10
 
 def postfix(string):
     stack = []
-    postfix = ''
+    post = ''
     for tk in string:
         if tk == '+':
             if stack:
-                postfix += stack.pop()
+                post += stack.pop()
             stack.append(tk)  # push
         else:
-            postfix += tk  # 피연산자인 경우 출력
+            post += tk
 
     while stack:
-        postfix += stack.pop()
+        post += stack.pop()
 
-    return postfix
+    return post
 
 
 for t in range(T):
     _ = int(input())
     fx = input()
     postfix_fx = postfix(fx)
-    st = []
-    for tk in postfix_fx:
-        if tk == '+':
-            a = st.pop()
-            b = st.pop()
-            st.append(a+b)    # 연산된 값을 push
-        else:   # 피연산자라면
-            st.append(int(tk))
-
-    print(f'#{t+1} {st[0]}')
+    print(postfix_fx)
+    # st = []
+    # for tk in postfix_fx:
+    #     if tk != '+':
+    #         st.append(tk)
+    #     else:
+    #         a = st.pop()
+    #         b = st.pop()
+    #         st.append(int(a)+int(b))    # 연산된 값을 push
+    # print(f'#{t+1} {st[0]}')
