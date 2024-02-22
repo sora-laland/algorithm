@@ -6,6 +6,7 @@ N = int(input())
 infix = input()
 postfix = ''
 S = []
+icp = []
 for tk in infix:
     if tk in icp:
         if tk == '(': # 여는 괄호 부분은 빼도 됨
@@ -24,4 +25,4 @@ for tk in postfix:
     if tk in icp:
         a = S.pop()
         b = S.pop()
-        if tk == '*':
+        # if tk == '*':

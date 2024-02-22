@@ -9,7 +9,7 @@ for i in range(N):
 # print(oven)
 
 end = 0 # 몇번째 피자까지 썼는지 인덱스에 더해줄 값
-while oven:
+while len(oven) > 1:
     for i in range(N):
         print(pizzas)
         front = oven.popleft()
