@@ -13,20 +13,20 @@ for _ in range(M):
 visited = [0] * (N+1)
 q = deque()
 
-def bfs(start, end):
-    cnt = 0
+def bfs(start):
     q.append(start)
+    visited[start] = 1
     while q:
         w = q.popleft()
-        visited[w] = 1  # 방문 표시
-        cnt += 1
         for node in adj[w]:
             if visited[node]:
                 continue
             q.append(node)
-            if node == end:
-                return cnt
-    return -1
+            visited[node] = visited[w] + 1
 
 
-print(bfs(tarx, tary))
+bfs(tarx)
+if visited[tary]:
+    print(visited[tary]-1)
+else:
+    print(-1)
