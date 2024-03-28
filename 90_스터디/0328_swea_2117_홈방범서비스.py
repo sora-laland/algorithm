@@ -28,7 +28,7 @@ for t in range(T):
             for j in range(N):
                 cnt = count(i, j, K)
                 income = cnt * M - cost
-                if income > 0:
+                if income >= 0:
                     temp = max(temp, cnt)
         max_cnt = max(max_cnt, temp)
         K += 1
