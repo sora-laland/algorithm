@@ -5,20 +5,23 @@ arr = [list(map(int, input().split())) for _ in range(N)]
 di = [1, -1, 0, 0]
 dj = [0, 0, 1, -1]
 
+def dfs(r, c):
+    st = []
+    st.append((r, c))
+    while st:
+        i, j = st.pop()
+        for k in range(4):
+            ni = i + di[k]
+            nj = j + dj[k]
+            if not ((0<=ni<N) and (0<=nj<N)):
+                continue
+            if arr[ni][nj] <= depth:
+                continue
+            if visited[ni][nj]:
+                continue
 
-def dfs(i, j):
-    for k in range(4):
-        ni = i + di[k]
-        nj = j + dj[k]
-        if not ((0<=ni<N) and (0<=nj<N)):
-            continue
-        if arr[ni][nj] <= depth:
-            continue
-        if visited[ni][nj]:
-            continue
-
-        visited[ni][nj] = visited[i][j]+1
-        dfs(ni, nj)
+            visited[ni][nj] = visited[i][j]+1
+            st.append((ni, nj))
 
 
 def count_1():
