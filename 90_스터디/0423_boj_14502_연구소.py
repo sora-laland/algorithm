@@ -33,13 +33,13 @@ def virus():
                 cnt += 1
     return cnt
 
-
-
 # print(virus())
 
 # 벽 만들기
 def make_wall(x):
     if x == 3:
+        print(virus())
+        # 원래 arr 초기화 필요
         return
 
     for r in range(N):
@@ -47,10 +47,11 @@ def make_wall(x):
             if arr[r][c] == 0:
                 arr[r][c] = 1
                 make_wall(x+1)
-                print(virus())
                 arr[r][c] = 0
 
 
-make_wall()
-print(arr)
+make_wall(0)
+# print(arr)
+
+
 
